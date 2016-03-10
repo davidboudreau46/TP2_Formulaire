@@ -1,0 +1,54 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+
+	<form name="contactForm" novalidate ng-hide="sentForm" ng-model="form">
+		<div class="form-group row" show-errors='{showSuccess: true}'>
+			<label class="control-label col-xs-12 col-sm-6 col-lg-4">Nom d'utilisateur: </label>
+			<div class="col-xs-12 col-sm-6 col-lg-8">
+				<input type="text" class="form-control" name="contactName" ng-model="contact.name" required />
+				<p id="emptyNameError" class="help-block text-center" ng-show="contactForm.contactName.$error.required">Le nom d'utilisateur est requis.</p>
+			</div>
+		</div>
+		<div class="form-group row" show-errors='{showSuccess: true}'>
+			<label class="control-label col-xs-12 col-sm-6 col-lg-4">Adresse courriel: </label>
+			<div class="col-xs-12 col-sm-6 col-lg-8">
+				<input type="email" class="form-control" name="contactEmail" ng-model="contact.email" required />
+				<div class="help-block text-center">
+					<p id="emptyEmailError" ng-show="contactForm.contactEmail.$error.required">L'adresse courriel est requis. </p>
+					<p id="invalidEmailError"ng-show="contactForm.contactEmail.$error.email">L'adresse courriel est invalide. </p>
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="control-label col-xs-12 col-sm-6 col-lg-4">Sujet du message: </label>
+			<div class="col-xs-12 col-sm-6 col-lg-8">
+				<select class="form-control col-xs-12 col-sm-6 col-lg-8" name="contactReason">
+					<option ng-repeat="type in contactType" value="{{type.name}}">
+						{{type.name}}
+					</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group row " show-errors='{showSuccess: true}'>
+			<label class="control-label col-xs-12 col-sm-6 col-lg-4">Votre message: </label>
+			<div class="col-xs-12 col-sm-12 col-lg-12">
+				<textarea rows="4" class="form-control" name="message" ng-model="contact.message" required />
+				<p id="emptyMessageError" class="help-block text-center" ng-show="contactForm.message.$error.required">Le message est requis.</p>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-xs-12 col-sm-12 col-lg-12">
+				<button id="submitButton" type="submit" class="btn btn-primary pull-right" ng-disabled="contactForm.$invalid" ng-click="sendForm()">
+					Envoyer
+				</button>
+				<popover text="Veuillez tout remplir correctement." class="pull-right" icon="glyphicon glyphicon-warning-sign" ng-show="contactForm.$invalid"></popover>
+			</div>
+		</div>
+		<br>
+	</form>
+	<div class="alert alert-success text-center" ng-show="sentForm" id="successMessage">
+	  <strong>Message envoyé!</strong> Merci {{contact.name}} d'avoir envoyé votre message.
+	</div>
+</div>

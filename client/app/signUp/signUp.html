@@ -1,0 +1,61 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+	<form name="signUpForm" ng-model="form" novalidate ng-hide="sentForm">
+		<div class="form-group row" show-errors='{showSuccess: true}'>
+			<label class="control-label col-xs-12 col-sm-6 col-lg-4">Prénom: </label>
+			<div class="col-xs-12 col-sm-6 col-lg-8">
+				<input type="text" class="form-control" name="userName" ng-model="user.name" required />
+				<p id="emptyNameError" class="help-block text-center" ng-show="signUpForm.userName.$error.required">Le prénom est requis.</p>
+			</div>
+		</div>
+		<div class="form-group row" show-errors='{showSuccess: true}'>
+			<label class="control-label col-xs-12 col-sm-6 col-lg-4">Nom de famille: </label>
+			<div class="col-xs-12 col-sm-6 col-lg-8">
+				<input type="text" class="form-control" name="userFamilyName" ng-model="user.familyName" required />
+				<p id="emptyFamilyNameError" class="help-block text-center" ng-show="signUpForm.userFamilyName.$error.required">Le nom de famille est requis.</p>
+			</div>
+		</div>
+		<div class="form-group row" show-errors='{showSuccess: true}'>
+			<label class="control-label col-xs-12 col-sm-6 col-lg-4">Adresse courriel: </label>
+			<div class="col-xs-12 col-sm-6 col-lg-8">
+				<input type="email" class="form-control" name="userEmail" ng-model="user.email" required />
+				<div class="help-block text-center control-group error">
+					<p id="emptyEmailError" ng-show="signUpForm.userEmail.$error.required">L'adresse courrielle est requise. </p>
+					<p id="invalidEmailError" ng-show="signUpForm.userEmail.$error.email">L'adresse courrielle est invalide. </p>
+				</div>
+			</div>
+		</div>
+		<div class="form-group row" show-errors='{showSuccess: true}' >
+			<label class="control-label col-xs-12 col-sm-6 col-lg-4">
+				Mot de passe: 
+				<popover text="Minimum de trois caractères" icon="glyphicon glyphicon-question-sign"></popover>
+			</label>
+			<div class="col-xs-12 col-sm-6 col-lg-8">
+				<input type="password" class="form-control" name="userPassword" ng-model="user.password" ng-minlength="3" required />
+				<div class="help-block text-center">
+					<p id="emptyPasswordError" ng-show="signUpForm.userPassword.$error.required">Le mot de passe est requis.</p>
+					<p id="invalidPasswordError" ng-show="signUpForm.userPassword.$error.minlength">Le mot de passe doit avoir au moins 3 caractères.</p>
+				</div>
+			</div>
+		</div>
+		<div class="form-group row" show-errors='{showSuccess: true}'>
+			<label class="control-label col-xs-12 col-sm-6 col-lg-4">Confirmer le mot de passe: </label>
+			<div class="col-xs-12 col-sm-6 col-lg-8">
+				<input type="password" class="form-control" name="userPasswordConfirm" ng-model="user.passwordConfirm" required compare-to="user.password"/>
+				<p id="passwordNotMatchError" class="help-block text-center" ng-show="signUpForm.userPasswordConfirm.$error">Veuillez confirmer le mot de passe.</p>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-xs-12 col-sm-12 col-lg-12">
+				<button type="submit" id="submitButton" class="btn btn-primary pull-right" ng-disabled="signUpForm.$invalid" ng-click="sendForm()">Envoyer</button>
+				<popover text="Veuillez tout remplir correctement." class="pull-right" icon="glyphicon glyphicon-warning-sign" ng-show="signUpForm.$invalid"></popover>
+			</div>
+		</div>
+	</form>
+	<div class="alert alert-success text-center" ng-show="sentForm" id="successMessage">
+	  <strong>Inscription terminée!</strong> Merci {{user.name}} de vous être inscrit.
+	</div>
+
+
+</div>
