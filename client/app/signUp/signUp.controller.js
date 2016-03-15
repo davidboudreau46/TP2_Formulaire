@@ -23,14 +23,4 @@ angular.module('tp1FullstackApp')
 				}); 
 			}
 		};
-	})
-	.directive('popover', function(){
-		return{
-			scope: {
-				textToPopUp: '@text',
-				iconToShow: '@icon'
-			},
-			templateUrl: '/scripts/controllers/popover.html'
-		};
-		
 	});

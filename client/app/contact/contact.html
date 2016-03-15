@@ -43,7 +43,7 @@
 				<button id="submitButton" type="submit" class="btn btn-primary pull-right" ng-disabled="contactForm.$invalid" ng-click="sendForm()">
 					Envoyer
 				</button>
-				<popover text="Veuillez tout remplir correctement." class="pull-right" icon="glyphicon glyphicon-warning-sign" ng-show="contactForm.$invalid"></popover>
+				<span class="glyphicon glyphicon-warning-sign pull-right" uib-popover="Veuillez tout remplir correctement." popover-trigger="mouseenter" ng-show="contactForm.$invalid"> </span>
 			</div>
 		</div>
 		<br>

@@ -1,21 +1,20 @@
 'use strict';
 
-describe('Controller: SignUpCtrl', function () {
+describe('Controller: SignupCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('tp1FullstackApp'));
+	// load the controller's module
+	beforeEach(module('tp1FullstackApp'));
 
-  var SignUpCtrl, scope;
+	var SignupCtrl,
+    scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    SignUpCtrl = $controller('SignUpCtrl', {
-      $scope: scope
-    });
-  }));
+	// Initialize the controller and a mock scope
+	beforeEach(inject(function ($rootScope, $controller) {
+		scope = $rootScope.$new();
+		SignupCtrl = $controller('SignupCtrl', {
+			$scope: scope
+			// place here mocked dependencies
+		});
+	}));
 
-  it('should ...', function () {
-    expect(1).toEqual(1);
-  });
 });

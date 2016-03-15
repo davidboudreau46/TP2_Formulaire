@@ -29,7 +29,7 @@
 		<div class="form-group row" show-errors='{showSuccess: true}' >
 			<label class="control-label col-xs-12 col-sm-6 col-lg-4">
 				Mot de passe: 
-				<popover text="Minimum de trois caractères" icon="glyphicon glyphicon-question-sign"></popover>
+				<span class="glyphicon glyphicon-question-sign" uib-popover="Minimum de 3 caractères" popover-trigger="mouseenter"> </span>
 			</label>
 			<div class="col-xs-12 col-sm-6 col-lg-8">
 				<input type="password" class="form-control" name="userPassword" ng-model="user.password" ng-minlength="3" required />
@@ -43,19 +43,17 @@
 			<label class="control-label col-xs-12 col-sm-6 col-lg-4">Confirmer le mot de passe: </label>
 			<div class="col-xs-12 col-sm-6 col-lg-8">
 				<input type="password" class="form-control" name="userPasswordConfirm" ng-model="user.passwordConfirm" required compare-to="user.password"/>
-				<p id="passwordNotMatchError" class="help-block text-center" ng-show="signUpForm.userPasswordConfirm.$error">Veuillez confirmer le mot de passe.</p>
+				<p id="passwordNotMatchError" class="help-block text-center" ng-show="signUpForm.userPasswordConfirm.$invalid">Veuillez confirmer le mot de passe.</p>
 			</div>
 		</div>
 		<div class="form-group row">
 			<div class="col-xs-12 col-sm-12 col-lg-12">
 				<button type="submit" id="submitButton" class="btn btn-primary pull-right" ng-disabled="signUpForm.$invalid" ng-click="sendForm()">Envoyer</button>
-				<popover text="Veuillez tout remplir correctement." class="pull-right" icon="glyphicon glyphicon-warning-sign" ng-show="signUpForm.$invalid"></popover>
+				<span class="glyphicon glyphicon-warning-sign pull-right" uib-popover="Veuillez tout remplir correctement." popover-trigger="mouseenter" ng-show="signUpForm.$invalid"> </span>
 			</div>
 		</div>
 	</form>
 	<div class="alert alert-success text-center" ng-show="sentForm" id="successMessage">
 	  <strong>Inscription terminée!</strong> Merci {{user.name}} de vous être inscrit.
 	</div>
-
-
 </div>
