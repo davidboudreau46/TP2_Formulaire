@@ -12,6 +12,38 @@ describe('Controller: SignupCtrl', function () {
 		});
 	});
 	
+	it('no error messages should be shown from start', function() {
+		browser.get('#/signUp');
+		
+		element(by.id('emptyFamilyNameError')).isDisplayed().then(function(visible){
+			expect(visible).toBeFalsy();
+		});
+		
+		element(by.id('emptyNameError')).isDisplayed().then(function(visible){
+			expect(visible).toBeFalsy();
+		});
+		
+		element(by.id('invalidPasswordError')).isDisplayed().then(function(visible){
+			expect(visible).toBeFalsy();
+		});
+		
+		element(by.id('emptyPasswordError')).isDisplayed().then(function(visible){
+			expect(visible).toBeFalsy();
+		});
+		
+		element(by.id('emptyEmailError')).isDisplayed().then(function(visible){
+			expect(visible).toBeFalsy();
+		});
+		
+		element(by.id('invalidEmailError')).isDisplayed().then(function(visible){
+			expect(visible).toBeFalsy();
+		});
+		
+		element(by.id('passwordNotMatchError')).isDisplayed().then(function(visible){
+			expect(visible).toBeFalsy();
+		});
+	});
+	
 	it('submit button should be disabled if form is empty', function() {
 		browser.get('#/signUp');
 		submitButton=element(by.id('submitButton'));
@@ -33,7 +65,8 @@ describe('Controller: SignupCtrl', function () {
 	it('empty password should show error', function() {
 		browser.get('#/signUp');
 		
-		element(by.model('user.password')).click();
+		element(by.model('user.password')).sendKeys(1);
+		element(by.model('user.password')).clear();
 		
 		element(by.model('user.name')).click();
 		
@@ -45,7 +78,8 @@ describe('Controller: SignupCtrl', function () {
 	it('empty user name should show error', function() {
 		browser.get('#/signUp');
 		
-		element(by.model('user.name')).click();
+		element(by.model('user.name')).sendKeys(1);
+		element(by.model('user.name')).clear();
 		
 		element(by.model('user.password')).click();
 		
@@ -57,7 +91,8 @@ describe('Controller: SignupCtrl', function () {
 	it('empty user familyName should show error', function() {
 		browser.get('#/signUp');
 		
-		element(by.model('user.familyName')).click();
+		element(by.model('user.familyName')).sendKeys(1);
+		element(by.model('user.familyName')).clear();
 		
 		element(by.model('user.password')).click();
 		
@@ -81,7 +116,8 @@ describe('Controller: SignupCtrl', function () {
 	it('empty email should show message', function() {
 		browser.get('#/signUp');
 		
-		element(by.model('user.email')).click();
+		element(by.model('user.email')).sendKeys(1);
+		element(by.model('user.email')).clear();
 		
 		element(by.model('user.name')).click();
 		
