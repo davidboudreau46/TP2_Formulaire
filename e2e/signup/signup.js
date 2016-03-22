@@ -75,7 +75,20 @@ describe('Controller: SignupCtrl', function () {
 		});
 	});
 	
-	it('empty user name should show error', function() {
+	it('empty userName should show error', function() {
+		browser.get('#/signUp');
+		
+		element(by.model('user.userName')).sendKeys(1);
+		element(by.model('user.userName')).clear();
+		
+		element(by.model('user.password')).click();
+		
+		element(by.id('emptyUserNameError')).isDisplayed().then(function(visible){
+			expect(visible).toBeTruthy();
+		});
+	});
+	
+	it('empty name should show error', function() {
 		browser.get('#/signUp');
 		
 		element(by.model('user.name')).sendKeys(1);

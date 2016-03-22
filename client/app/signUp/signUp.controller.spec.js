@@ -16,5 +16,9 @@ describe('Controller: SignupCtrl', function () {
 			// place here mocked dependencies
 		});
 	}));
+	
+	it('compareTo should make sure that both passwords are the same', function() {
+		
+	});
 
 });
