@@ -14,7 +14,7 @@ angular.module('tp1FullstackApp')
 			$scope.movies = response.data.Search;
 			for(var i = 0; i < $scope.movies.length; i++){
 				if($scope.movies[i].Poster === 'N/A'){
-					$scope.movies[i].Poster = 'app/images/posterNotAvailable.jpg';
+					$scope.movies[i].Poster = 'assets/images/posterNotAvailable.jpg';
 				}
 			}
 		}, function errorCallback() {
