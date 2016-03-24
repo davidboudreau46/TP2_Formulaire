@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('tp1FullstackApp')
-  .controller('ContactCtrl', function ($scope) {
+  .controller('ContactCtrl', function ($scope, $http) {
 		$scope.contactType=[
 			{name:'Problèmes'},
 			{name:'Félicitations'},
@@ -10,7 +10,21 @@ angular.module('tp1FullstackApp')
 			{name:'Autre'}
 		];
 		$scope.sendForm= function(){
-			$scope.sentForm=true;
+			$http({
+				method: 'POST',
+				url: 'https://crispesh.herokuapp.com/api/contact',
+				data: {
+					'email': $scope.contact.email,
+					'reason': $scope.contact.reason,
+					'body': $scope.contact.message,
+					'name': $scope.contact.name
+				}
+			}).then(function successCallback(response) {
+				console.log(response);
+				$scope.sentForm=true;
+			}, function errorCallback() {
+				$scope.invalidMessage=true;
+			});
 		};
 	}) 
 	.directive('showErrors', function ($timeout, showErrorsConfig) {

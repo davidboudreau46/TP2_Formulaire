@@ -8,8 +8,8 @@ angular.module('tp1FullstackApp')
 				method: 'POST',
 				url: 'https://crispesh.herokuapp.com/api/login_check',
 				data: {
-					email: $scope.user.email,
-					password: $scope.user.password
+					'email': $scope.signIn.email,
+					'password': $scope.signIn.password
 				}
 			}).then(function successCallback(response) {
 				$location.path('/');

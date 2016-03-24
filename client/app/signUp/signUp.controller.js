@@ -8,10 +8,10 @@ angular.module('tp1FullstackApp')
 				method: 'POST',
 				url: 'https://crispesh.herokuapp.com/api/register',
 				data: {
-					email: $scope.user.email,
-					firstname: $scope.user.name,
-					lastname: $scope.user.familyName,
-					password: $scope.user.password
+					'email': $scope.user.email,
+					'firstname': $scope.user.name,
+					'lastname': $scope.user.familyName,
+					'password': $scope.user.password
 				}
 			}).then(function successCallback(response) {
 				console.log(response);
@@ -20,7 +20,6 @@ angular.module('tp1FullstackApp')
 				$scope.invalidLogin=true;
 			});
 		};
-		
 	})
 	.directive('compareTo', function() {
 		return {
