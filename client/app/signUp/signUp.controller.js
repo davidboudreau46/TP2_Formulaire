@@ -1,18 +1,24 @@
 'use strict';
 
 angular.module('tp1FullstackApp')
-	.controller('SignUpCtrl', function ($scope, Post) {
+	.controller('SignUpCtrl', function ($scope, $http) {
 		 
 		$scope.sendForm= function(){
-			
-			$scope.sentForm=true;
-			
-			// GET : Récupère tous les Posts
-			$scope.users = Post.query();
-			 
-			// SAVE : Crée un nouveau Post
-			var myPostObj= {userName: $scope.user.userName, name:$scope.user.name, familyName:$scope.user.familyName, email: $scope.user.email , userPassword:$scope.user.password};
-			Post.save(myPostObj);
+			$http({
+				method: 'POST',
+				url: 'https://crispesh.herokuapp.com/api/register',
+				data: {
+					email: $scope.user.email,
+					firstname: $scope.user.name,
+					lastname: $scope.user.familyName,
+					password: $scope.user.password
+				}
+			}).then(function successCallback(response) {
+				console.log(response);
+				$scope.sentForm=true;
+			}, function errorCallback() {
+				$scope.invalidLogin=true;
+			});
 		};
 		
 	})

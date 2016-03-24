@@ -2,6 +2,9 @@
 
 <div class="container">
 	<form name="signUpForm" ng-model="form" novalidate ng-hide="sentForm">
+		<div class="alert alert-danger" ng-show="invalidLogin">
+			<strong>Erreur!</strong> Connexion impossible. Il semble y avoir une erreur imprévue. Confirmez vos informations et réessayez plus tard.
+		</div>
 		<div class="form-group row" show-errors='{showSuccess: true}'>
 			<label class="control-label col-xs-12 col-sm-6 col-lg-4">Nom d'utilisateur: </label>
 			<div class="col-xs-12 col-sm-6 col-lg-8">

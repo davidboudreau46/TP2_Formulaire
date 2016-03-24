@@ -2,6 +2,9 @@
 
 <div class="container">
 	<form name="signInForm" ng-model="form" novalidate ng-hide="sentForm">
+		<div class="alert alert-danger" ng-show="invalidLogin">
+			<strong>Erreur!</strong> Connexion impossible. Veuillez vérifier votre adresse e-mail et votre mot de passe.
+		</div>
 		<div class="form-group row" show-errors='{showSuccess: true}'>
 			<label class="control-label col-xs-12 col-sm-6 col-lg-4">Adresse courriel: </label>
 			<div class="col-xs-12 col-sm-6 col-lg-8">
