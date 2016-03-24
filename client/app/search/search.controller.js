@@ -1,8 +1,6 @@
 'use strict';
 
 angular.module('tp1FullstackApp')
-  
-
 .controller('SearchCtrl', function ($scope, $http) {
 	$scope.isSearch=true;
 	$scope.Search = function(){
@@ -16,9 +14,8 @@ angular.module('tp1FullstackApp')
 				if($scope.movies[i].Poster === 'N/A'){
 					$scope.movies[i].Poster = 'assets/images/posterNotAvailable.jpg';
 				}
-			}
-		}, function errorCallback() {
-			$scope.movies = [{Title : 'Erreur de connection'}];
-		});
-	};
-  });
+			}, function errorCallback() {
+				$scope.movies = [{Title : 'Erreur de connection'}];
+			});
+		};
+	  });
