@@ -14,7 +14,8 @@ angular.module('tp1FullstackApp')
 				if($scope.movies[i].Poster === 'N/A'){
 					$scope.movies[i].Poster = 'assets/images/posterNotAvailable.jpg';
 				}
-			}, function errorCallback() {
+			}
+		}, function errorCallback() {
 				$scope.movies = [{Title : 'Erreur de connection'}];
 			});
 		};
