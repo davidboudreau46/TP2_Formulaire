@@ -15,11 +15,12 @@
             <li ng-class="{ active: isActive('/')}"><a href="/">Home</a></li>
             <li ng-class="{ active: isActive('/contact')}"><a ng-href="/contact">Contact</a></li>
             <li ng-class="{ active: isActive('/search')}"><a ng-href="/search">Recherche</a></li>
+			<li ng-show="isLogged()"> <a ng-href="/playlist">Liste de lecture</a> </li>
         </ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li ng-hide="isLogged()" ng-class="{ active: isActive('/signIn')}"><a ng-href="/signIn">Connexion</a></li>
 			<li ng-hide="isLogged()" ng-class="{ active: isActive('/signUp')}"><a ng-href="/signUp">Inscription</a></li>
-			<li ng-show="isLogged()"> Bonjour, {{getUserName()}}</li>
+			<li ng-show="isLogged()"> <a ng-href="/"> Bonjour, {{getUserName()}} </a> </li>
 			<li ng-show="isLogged()"> <a ng-href="/" ng-click="logOut()">Déconnexion</a> </li>
 		</ul>
     </div>

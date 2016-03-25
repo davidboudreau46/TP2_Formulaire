@@ -8,7 +8,7 @@
 		<div class="form-group row" show-errors='{showSuccess: true}'>
 			<label class="control-label col-xs-12 col-sm-6 col-lg-4">Adresse courriel: </label>
 			<div class="col-xs-12 col-sm-6 col-lg-8">
-				<input type="email" class="form-control" name="userEmail" ng-model="signIn.email" required />
+				<input type="email" class="form-control" name="userEmail" ng-model="signIn.email" required autofocus/>
 				<div class="help-block text-center control-group error">
 					<p id="emptyEmailError" ng-show="signInForm.userEmail.$error.required && signInForm.userEmail.$dirty">L'adresse courrielle est requise. </p>
 					<p id="invalidEmailError" ng-show="signInForm.userEmail.$error.email && signInForm.userEmail.$dirty">L'adresse courrielle est invalide. </p>

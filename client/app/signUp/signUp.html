@@ -8,7 +8,7 @@
 		<div class="form-group row" show-errors='{showSuccess: true}'>
 			<label class="control-label col-xs-12 col-sm-6 col-lg-4">Nom d'utilisateur: </label>
 			<div class="col-xs-12 col-sm-6 col-lg-8">
-				<input type="text" class="form-control" name="userName" ng-model="user.userName" required />
+				<input type="text" class="form-control" name="userName" ng-model="user.userName" required autofocus/>
 				<p id="emptyUserNameError" class="help-block text-center" ng-show="signUpForm.userName.$error.required && signUpForm.userName.$dirty">Le nom d'utilisateur est requis.</p>
 			</div>
 		</div>
