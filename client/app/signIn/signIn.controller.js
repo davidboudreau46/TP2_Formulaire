@@ -27,5 +27,5 @@ angular.module('tp1FullstackApp')
 				$element[0].focus();
 			  });
 			}
-		}
+		};
 	}]);

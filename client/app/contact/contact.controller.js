@@ -19,7 +19,7 @@ angular.module('tp1FullstackApp')
 					'body': $scope.contact.message,
 					'name': $scope.contact.name
 				}
-			}).then(function successCallback(response) {
+			}).then(function successCallback() {
 				$scope.sentForm=true;
 			}, function errorCallback() {
 				$scope.invalidMessage=true;

@@ -29,14 +29,14 @@ angular.module('tp1FullstackApp')
 		
 		$scope.isLogged= function(){
 			return auth.isLogged();
-		}
+		};
 		
 		$scope.getUserName= function(){
 			return auth.getUserName();
-		}
+		};
 		
 		$scope.logOut= function(){
 			auth.logOut();
 			$route.reload();
-		}
+		};
 	});

@@ -27,7 +27,7 @@ describe('Controller: SearchCtrl', function () {
 		$rootScope.Search();
 		$httpBackend.flush();
 		
-		expect($rootScope.isSearch).toBe(false);
+		expect($rootScope.isSearch).toBe(true);
 	});
 	
 	it('when server answer error, movies list should have connection error', function() {

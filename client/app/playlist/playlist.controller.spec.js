@@ -15,6 +15,4 @@ describe('Component: PlaylistComponent', function () {
     });
   }));
 
-  it('should ...', function () {
-  });
 });
