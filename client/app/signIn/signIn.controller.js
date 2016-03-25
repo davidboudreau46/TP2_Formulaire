@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('tp1FullstackApp')
-	.controller('SignInCtrl', function ($scope, $http, $location) {
+	.controller('SignInCtrl', function ($scope, $http, $location, auth) {
 		
 		$scope.sendForm= function(){
 			var url= 'https://crispesh.herokuapp.com/api/login_check';
@@ -10,11 +10,11 @@ angular.module('tp1FullstackApp')
 				method: 'POST',
 				url: url,
 				data: data,
-			}).then(function successCallback(response) {
+			}).then(function successCallback(data) {
+				console.log(data);
+				auth.logIn($scope.signIn.email);
 				$location.path('/');
-				$scope.loggedIn=true;
-			}, function errorCallback(response) {
-				console.log(response);
+			}, function errorCallback() {
 				$scope.invalidLogin=true;
 			});
 		};
