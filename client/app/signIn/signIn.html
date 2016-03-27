@@ -8,7 +8,7 @@
 		<div class="form-group row" show-errors='{showSuccess: true}'>
 			<label class="control-label col-xs-12 col-sm-6 col-lg-4">Adresse courriel: </label>
 			<div class="col-xs-12 col-sm-6 col-lg-8">
-				<input type="email" class="form-control" name="userEmail" ng-model="signIn.email" required autofocus/>
+				<input type="email" class="form-control" name="userEmail" ng-model="signInEmail" required autofocus/>
 				<div class="help-block text-center control-group error">
 					<p id="emptyEmailError" ng-show="signInForm.userEmail.$error.required && signInForm.userEmail.$dirty">L'adresse courrielle est requise. </p>
 					<p id="invalidEmailError" ng-show="signInForm.userEmail.$error.email && signInForm.userEmail.$dirty">L'adresse courrielle est invalide. </p>
@@ -20,7 +20,7 @@
 				Mot de passe: 
 			</label>
 			<div class="col-xs-12 col-sm-6 col-lg-8">
-				<input type="password" class="form-control" name="userPassword" ng-model="signIn.password" ng-minlength="3" required />
+				<input type="password" class="form-control" name="userPassword" ng-model="signInPassword" ng-minlength="3" required />
 				<div class="help-block text-center">
 					<p id="emptyPasswordError" ng-show="signInForm.userPassword.$error.required && signInForm.userPassword.$dirty">Le mot de passe est requis.</p>
 					<p id="invalidPasswordError" ng-show="signInForm.userPassword.$error.minlength && signInForm.userPassword.$dirty">Le mot de passe doit avoir au moins 3 caractères.</p>

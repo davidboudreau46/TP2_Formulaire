@@ -5,14 +5,12 @@ angular.module('tp1FullstackApp')
 		
 		$scope.sendForm= function(){
 			var url= 'https://crispesh.herokuapp.com/api/login_check';
-			var data= {username: $scope.signIn.email, password: $scope.signIn.password};
+			var data= {username: $scope.signInEmail, password: $scope.signInPassword};
 			$http({
 				method: 'POST',
 				url: url,
 				data: data,
-			}).then(function successCallback(data) {
-				console.log(data);
-				auth.logIn($scope.signIn.email);
+			}).then(function successCallback() {
 				$location.path('/');
 			}, function errorCallback() {
 				$scope.invalidLogin=true;
