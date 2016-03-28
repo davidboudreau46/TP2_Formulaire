@@ -2,13 +2,13 @@
 
 angular.module('tp1FullstackApp')
 .controller('SearchCtrl', function ($scope, $http) {
-	$scope.isSearch=true;
+	$scope.isSearch=false;
 	$scope.Search = function(){
 		$http({
 			method: 'GET',
 			url: 'https://omdbapi.com/?s=' + $scope.filter + '&type=movie'
 		}).then(function successCallback(response) {
-			$scope.isSearch=false;
+			$scope.isSearch=true;
 			$scope.movies = response.data.Search;
 			for(var i = 0; i < $scope.movies.length; i++){
 				if($scope.movies[i].Poster === 'N/A'){
