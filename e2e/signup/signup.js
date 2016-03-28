@@ -53,9 +53,9 @@ describe('Controller: SignupCtrl', function () {
 	it('invalid password should show message', function() {
 		browser.get('#/signUp');
 		
-		element(by.model('user.password')).sendKeys(1);
+		element(by.model('password')).sendKeys(1);
 		
-		element(by.model('user.name')).click();
+		element(by.model('name')).click();
 		
 		element(by.id('invalidPasswordError')).isDisplayed().then(function(visible){
 			expect(visible).toBeTruthy();
@@ -65,10 +65,10 @@ describe('Controller: SignupCtrl', function () {
 	it('empty password should show error', function() {
 		browser.get('#/signUp');
 		
-		element(by.model('user.password')).sendKeys(1);
-		element(by.model('user.password')).clear();
+		element(by.model('password')).sendKeys(1);
+		element(by.model('password')).clear();
 		
-		element(by.model('user.name')).click();
+		element(by.model('name')).click();
 		
 		element(by.id('emptyPasswordError')).isDisplayed().then(function(visible){
 			expect(visible).toBeTruthy();
@@ -78,10 +78,10 @@ describe('Controller: SignupCtrl', function () {
 	it('empty userName should show error', function() {
 		browser.get('#/signUp');
 		
-		element(by.model('user.userName')).sendKeys(1);
-		element(by.model('user.userName')).clear();
+		element(by.model('userName')).sendKeys(1);
+		element(by.model('userName')).clear();
 		
-		element(by.model('user.password')).click();
+		element(by.model('password')).click();
 		
 		element(by.id('emptyUserNameError')).isDisplayed().then(function(visible){
 			expect(visible).toBeTruthy();
@@ -91,10 +91,10 @@ describe('Controller: SignupCtrl', function () {
 	it('empty name should show error', function() {
 		browser.get('#/signUp');
 		
-		element(by.model('user.name')).sendKeys(1);
-		element(by.model('user.name')).clear();
+		element(by.model('name')).sendKeys(1);
+		element(by.model('name')).clear();
 		
-		element(by.model('user.password')).click();
+		element(by.model('password')).click();
 		
 		element(by.id('emptyNameError')).isDisplayed().then(function(visible){
 			expect(visible).toBeTruthy();
@@ -104,10 +104,10 @@ describe('Controller: SignupCtrl', function () {
 	it('empty user familyName should show error', function() {
 		browser.get('#/signUp');
 		
-		element(by.model('user.familyName')).sendKeys(1);
-		element(by.model('user.familyName')).clear();
+		element(by.model('familyName')).sendKeys(1);
+		element(by.model('familyName')).clear();
 		
-		element(by.model('user.password')).click();
+		element(by.model('password')).click();
 		
 		element(by.id('emptyFamilyNameError')).isDisplayed().then(function(visible){
 			expect(visible).toBeTruthy();
@@ -117,9 +117,9 @@ describe('Controller: SignupCtrl', function () {
 	it('invalid email should show message', function() {
 		browser.get('#/signUp');
 		
-		element(by.model('user.email')).sendKeys('IamNotAnEmail');
+		element(by.model('email')).sendKeys('IamNotAnEmail');
 		
-		element(by.model('user.name')).click();
+		element(by.model('name')).click();
 		
 		element(by.id('invalidEmailError')).isDisplayed().then(function(visible){
 			expect(visible).toBeTruthy();
@@ -129,10 +129,10 @@ describe('Controller: SignupCtrl', function () {
 	it('empty email should show message', function() {
 		browser.get('#/signUp');
 		
-		element(by.model('user.email')).sendKeys(1);
-		element(by.model('user.email')).clear();
+		element(by.model('email')).sendKeys(1);
+		element(by.model('email')).clear();
 		
-		element(by.model('user.name')).click();
+		element(by.model('name')).click();
 		
 		element(by.id('emptyEmailError')).isDisplayed().then(function(visible){
 			expect(visible).toBeTruthy();
@@ -142,11 +142,11 @@ describe('Controller: SignupCtrl', function () {
 	it('if confirm password not match password show error', function() {
 		browser.get('#/signUp');
 		
-		element(by.model('user.passwordConfirm')).sendKeys('Hello darkness my old friend.');
+		element(by.model('passwordConfirm')).sendKeys('Hello darkness my old friend.');
 		
-		element(by.model('user.password')).sendKeys('I have come to talk with you again');
+		element(by.model('password')).sendKeys('I have come to talk with you again');
 		
-		element(by.model('user.name')).click();
+		element(by.model('name')).click();
 		
 		element(by.id('passwordNotMatchError')).isDisplayed().then(function(visible){
 			expect(visible).toBeTruthy();
@@ -156,11 +156,11 @@ describe('Controller: SignupCtrl', function () {
 	it('if confirm password match password do not show error', function() {
 		browser.get('#/signUp');
 		
-		element(by.model('user.passwordConfirm')).sendKeys('Within the sound of silence.');
+		element(by.model('passwordConfirm')).sendKeys('Within the sound of silence.');
 		
-		element(by.model('user.password')).sendKeys('Within the sound of silence.');
+		element(by.model('password')).sendKeys('Within the sound of silence.');
 		
-		element(by.model('user.name')).click();
+		element(by.model('name')).click();
 		
 		element(by.id('passwordNotMatchError')).isDisplayed().then(function(visible){
 			expect(visible).toBeFalsy();

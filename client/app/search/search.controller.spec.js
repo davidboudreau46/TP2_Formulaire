@@ -38,6 +38,7 @@ describe('Controller: SearchCtrl', function () {
 		$httpBackend.expectGET('https://omdbapi.com/?s=Deadpool&type=movie');
 		$httpBackend.when('GET', 'app/main/main.html').respond('');
 		$httpBackend.expectGET('app/main/main.html');
+		
 		$rootScope.filter="Deadpool";
 		$rootScope.Search();
 		$httpBackend.flush();

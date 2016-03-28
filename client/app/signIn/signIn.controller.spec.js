@@ -2,13 +2,14 @@
 
 describe('Controller: SignInCtrl', function () {
 
-	var $httpBackend, $rootScope, createController, authRequestHandler;
+	var $httpBackend, $rootScope, createController, authRequestHandler, location;
 
 	// load the controller's module
 	beforeEach(module('tp1FullstackApp'));
 
 	// Initialize the controller and a mock scope
-	beforeEach(inject(function ($injector) {
+	beforeEach(inject(function ($injector, $location) {
+		location = $location;
 		$httpBackend = $injector.get('$httpBackend');
 		authRequestHandler = $httpBackend.when('GET', '/auth')
 		.respond({userId: 'userX'}, {'A-Token': 'xxx'});
@@ -24,12 +25,13 @@ describe('Controller: SignInCtrl', function () {
 		$httpBackend.expectPOST('https://crispesh.herokuapp.com/api/login_check').respond(201, '');
 		$httpBackend.when('GET', 'app/main/main.html').respond('');
 		$httpBackend.expectGET('app/main/main.html');
+		
 		$rootScope.signInEmail="test@example.com";
 		$rootScope.signInPassword="test";
 		$rootScope.sendForm();
 		$httpBackend.flush();
 		
-		expect($rootScope.test).toBe(true);
+		expect(location.path()).toBe('/');
 	});
 	
 	it('with invalid credentials should show errors', function () {

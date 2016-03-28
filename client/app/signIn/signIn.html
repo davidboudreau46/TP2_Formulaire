@@ -2,7 +2,7 @@
 
 <div class="container">
 	<form name="signInForm" ng-model="form" novalidate ng-hide="sentForm">
-		<div class="alert alert-danger" ng-show="invalidLogin">
+		<div class="alert alert-danger" ng-show="invalidLogin" id="errorMessage">
 			<strong>Erreur!</strong> Connexion impossible. Veuillez vérifier votre adresse e-mail et votre mot de passe.
 		</div>
 		<div class="form-group row" show-errors='{showSuccess: true}'>

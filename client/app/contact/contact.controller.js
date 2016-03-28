@@ -14,10 +14,10 @@ angular.module('tp1FullstackApp')
 				method: 'POST',
 				url: 'https://crispesh.herokuapp.com/api/contact',
 				data: {
-					'email': $scope.contact.email,
-					'reason': $scope.contact.reason,
-					'body': $scope.contact.message,
-					'name': $scope.contact.name
+					'email': $scope.email,
+					'reason': $scope.reason,
+					'body': $scope.message,
+					'name': $scope.name
 				}
 			}).then(function successCallback() {
 				$scope.sentForm=true;
