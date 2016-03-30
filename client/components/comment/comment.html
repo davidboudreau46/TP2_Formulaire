@@ -2,9 +2,10 @@
 <ul>
 	<li ng-repeat="comment in comments">
 		{{ comment.body }}
-		<a class="text-danger pull-right" ng-click="deleteComment(comment.id)">Effacer votre commentaire</a>
-		<span class="pull-right"> - </span>
-		<a class="text-info pull-right" ng-click="edit=true">Éditer votre commentaire</a>
+		<div class="pull-right" ng-show="isMyComment(comment.user.username)">
+			<a class="text-danger" ng-click="deleteComment(comment.id)">Effacer votre commentaire</a>- 
+			<a class="text-info" ng-click="edit=true">Éditer votre commentaire</a>
+		</div>
 		<form ng-show="edit">
 			<br>
 			<p> Éditer votre commentaire
