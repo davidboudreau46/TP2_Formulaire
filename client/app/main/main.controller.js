@@ -13,4 +13,49 @@ angular.module('tp1FullstackApp')
 				$scope.movies[i].Poster = 'assets/images/posterNotAvailable.jpg';
 			}
 		}
+		
+		$scope.comments=[];
+		$scope.getComments= function(movieId){
+			$http({
+				method: 'GET',
+				url: 'https://crispesh.herokuapp.com/api/comments?' + movieId
+			}).then(function successCallback(response) {
+				$scope.comments[movieId]= response.data;
+				console.log(response.data);
+				return $scope.comments[movieId];
+			}, 
+			function errorCallback() {
+				console.log(response.data);
+			});
+		}
+		
+		console.log($scope.getComments('tt1431045'));
+		console.log($scope.comments['tt1431045']);
+		console.log($scope.getComments('tt2975590'));
+		console.log($scope.comments['tt2975590']);
+		
+		$scope.sendForm = function(movieId){
+			$http({
+				method: 'POST',
+				url: 'https://crispesh.herokuapp.com/api/comments',
+				data: {
+					'body' : "test",
+					'movie_id' : movieId
+				}
+			}).then(function successCallback(response) {
+				console.log(response);
+			}, function errorCallback(response) {
+				console.log(response);
+			});
+		}
+	})
+	.directive('comment', function(){
+		
+		return{
+			scope: {
+				id: '@id'
+			},
+			templateUrl: 'app/main/comment.html'
+		};
+		
 	});

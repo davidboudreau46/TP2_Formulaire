@@ -26,7 +26,7 @@ module.service('auth', function ($window) {
 
 	this.saveToken = function(token, name) {
 		$window.localStorage['jwtToken'] = token;
-		userName= name;
+		$window.localStorage['username'] = name;
 	};			
 
 	this.getToken = function() {
@@ -35,11 +35,11 @@ module.service('auth', function ($window) {
 	
 	this.logOut = function() {
 		$window.localStorage.removeItem('jwtToken');
-		userName = '';
+		$window.localStorage.removeItem('username');
 	};
 	
 	this.getUserName = function() {
-		return userName;
+		return $window.localStorage['username'];
 	};
  
 });
