@@ -19,24 +19,10 @@
 		  <div class="thumbnail"  style="min-height: 700px;">
 			<p class="text-center">{{movie.Title}}</p>
 			<img src="{{movie.Poster}}" width="40%" height="40%">
-			<br>
-			<form name="{{movie.imdbID}}Form" ng-model="form">
-			
-				<!--<comment id="{{movie.imdbID}}"></comment>-->
-				<!--<span ng-init="getComments(movie.imdbID)"/> -->
-				{{movie.imdbID}}
-				<span ng-repeat="comment in comments[movie.imdbID]"> 
-					{{comment.body}}
-				</span>
-			 
-				<label class="control-label col-xs-12 col-sm-6 col-lg-4">Commentez: </label>
-				<input type="text" class="form-control" name="commentName" required/>
-				<button id="submitButton" type="submit" class="btn btn-primary pull-right" ng-click="sendForm(movie.imdbID)">
-					Envoyer
-				</button>
-			</form>
+			<appx-comment omdbid="movie.imdbID"></appx-comment>
+			<appx-comment-create omdbid="movie.imdbID"></appx-comment-create> 
 		 </div>
-	   </div>
+	   </div> 
 	 </div>
 	</div>
 </div>

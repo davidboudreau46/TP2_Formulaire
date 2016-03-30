@@ -13,49 +13,82 @@ angular.module('tp1FullstackApp')
 				$scope.movies[i].Poster = 'assets/images/posterNotAvailable.jpg';
 			}
 		}
-		
-		$scope.comments=[];
-		$scope.getComments= function(movieId){
-			$http({
-				method: 'GET',
-				url: 'https://crispesh.herokuapp.com/api/comments?' + movieId
-			}).then(function successCallback(response) {
-				$scope.comments[movieId]= response.data;
-				console.log(response.data);
-				return $scope.comments[movieId];
-			}, 
-			function errorCallback() {
-				console.log(response.data);
-			});
-		}
-		
-		console.log($scope.getComments('tt1431045'));
-		console.log($scope.comments['tt1431045']);
-		console.log($scope.getComments('tt2975590'));
-		console.log($scope.comments['tt2975590']);
-		
-		$scope.sendForm = function(movieId){
-			$http({
-				method: 'POST',
-				url: 'https://crispesh.herokuapp.com/api/comments',
-				data: {
-					'body' : "test",
-					'movie_id' : movieId
-				}
-			}).then(function successCallback(response) {
-				console.log(response);
-			}, function errorCallback(response) {
-				console.log(response);
-			});
-		}
 	})
-	.directive('comment', function(){
-		
-		return{
-			scope: {
-				id: '@id'
+	.directive('appxComment', function ($http, $route) {
+		return {
+			templateUrl: 'components/comment/comment.html',
+			restrict: 'EA',
+			scope: { 
+				omdbid: '=omdbid'
 			},
-			templateUrl: 'app/main/comment.html'
+			link: function (scope, element, attrs) {
+				scope.$watch('omdbid', function(value) {
+					if(value !== undefined){
+						$http({
+						method: 'GET',
+						url: 'https://crispesh.herokuapp.com/api/comments?movie_id='+value,
+						timeout: 5000, 
+						}).then(function successCallback(response) {
+							scope.comments = response.data;
+						}, function errorCallback(response) {
+							console.log('Error loading comments');
+						}
+						);
+					}
+				});
+
+				scope.deleteComment= function(id){
+					$http({
+						method: 'DELETE',
+						url: 'https://crispesh.herokuapp.com/api/comments/' +id
+					}).then(function successCallback(response) {
+						$route.reload();
+					}, function errorCallback(response) {
+						
+					});
+				}
+				
+				scope.editComment= function(id, body, omdbid){
+					$http({
+						method: 'PUT',
+						url: 'https://crispesh.herokuapp.com/api/comments/' +id,
+						data: {
+							'body' : body,
+							'movie_id' : omdbid 
+						}
+					}).then(function successCallback(response) {
+						console.log(response);
+						$route.reload();
+					}, function errorCallback(response) {
+						console.log(response);
+					});
+				}
+
+			}
 		};
-		
+	})
+	.directive('appxCommentCreate', function ($http, $route) {
+		return {
+			templateUrl: 'components/comment/commentCreate.html',
+			restrict: 'EA',
+			scope: {
+				omdbid: '=omdbid'
+			},
+			link: function (scope, element, attrs) {
+				scope.sendForm= function(body, omdbid){
+					$http({
+						method: 'POST',
+						url: 'https://crispesh.herokuapp.com/api/comments',
+						data: {
+							'body' : body,
+							'movie_id' : omdbid 
+						}
+					}).then(function successCallback(response) {
+						$route.reload(); 
+					}, function errorCallback(response) {
+						
+					});
+				}
+			}
+		};
 	});

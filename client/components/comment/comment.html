@@ -1,0 +1,18 @@
+<p>Comments
+<ul>
+	<li ng-repeat="comment in comments">
+		{{ comment.body }}
+		<a class="text-danger pull-right" ng-click="deleteComment(comment.id)">Effacer votre commentaire</a>
+		<span class="pull-right"> - </span>
+		<a class="text-info pull-right" ng-click="edit=true">Éditer votre commentaire</a>
+		<form ng-show="edit">
+			<br>
+			<p> Éditer votre commentaire
+			<input type="text" class="form-control" name="name" ng-model="commentEdit" required />
+			<button type="submit" id="submitButton" class="btn btn-primary pull-right" ng-click="editComment(comment.id, commentEdit, omdbid)">Envoyer</button>
+			<br>
+		</form>
+	</li>
+</ul>
+
+<div ng-show="!!!comments.length">No comments found</div>
