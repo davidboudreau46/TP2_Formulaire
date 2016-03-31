@@ -4,14 +4,17 @@
 		<strong> {{comment.user.username}} </strong> :
 		<span class="pull-right"> {{comment.date_created.substring(0,10)}}</span>
 		<div class="pull-right" ng-show="isMyComment(comment.user.username)">
-			<span class="glyphicon glyphicon-remove" ng-click="deleteComment(comment.id)"/>
-			<span class="glyphicon glyphicon-pencil" ng-click="showEdit()" /> - &nbsp
+			<span ng-show="showDeleteComment && isDeleteComment(comment.id)">
+				<span class="text-danger"> Êtes-vous sûr? </span> <span ng-click="deleteComment(comment.id)" class="underline-hover">Yes</span>&nbsp <span class="text-danger">/</span>&nbsp <span class="underline-hover" ng-click="showDelete(comment.id)">No</span>
+			</span>
+			<span class="glyphicon glyphicon-remove" ng-click="showDelete(comment.id)" ng-hide="showDeleteComment && isDeleteComment(comment.id)" />
+			<span class="glyphicon glyphicon-pencil" ng-click="showEdit(comment.id)" /> - &nbsp
 		</div>
 	</div>
 	<div class="row">
 		{{ comment.body }}
 
-		<form ng-show="edit && isMyComment(comment.user.username)">
+		<form ng-show="showEditComment && isEditComment(comment.id)">
 			<br>
 			<p> Éditer votre commentaire
 			<input type="text" class="form-control" name="name" ng-model="commentEdit" required />
@@ -23,21 +26,6 @@
 	</div>
 </div>
 
-<div ng-show="!!!comments.length">No comments found</div>
+<div ng-show="!!!comments.length">Aucun commentaire trouvé.</div>
+<br>
 
-<!--<ul>
-	<li ng-repeat="comment in comments">
-		{{ comment.body }}
-		<div class="pull-right" ng-show="isMyComment(comment.user.username)">
-			<a class="text-danger" ng-click="deleteComment(comment.id)">Effacer votre commentaire</a>- 
-			<a class="text-info" ng-click="edit=true">Éditer votre commentaire</a>
-		</div>
-		<form ng-show="edit">
-			<br>
-			<p> Éditer votre commentaire
-			<input type="text" class="form-control" name="name" ng-model="commentEdit" required />
-			<button type="submit" id="submitButton" class="btn btn-primary pull-right" ng-click="editComment(comment.id, commentEdit, omdbid)">Envoyer</button>
-			<br>
-		</form>
-	</li>
-</ul>-->
