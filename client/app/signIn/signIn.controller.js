@@ -2,7 +2,7 @@
 
 angular.module('tp1FullstackApp')
 	.controller('SignInCtrl', function ($scope, $http, $location, auth) {
-		
+
 		$scope.sendForm= function(){
 			var url= 'https://crispesh.herokuapp.com/api/login_check';
 			var data= {username: $scope.signInEmail, password: $scope.signInPassword};

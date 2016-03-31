@@ -1,18 +1,21 @@
 'use strict';
 
-describe('Component: PlaylistComponent', function () {
+describe('Controller: PlaylistCtrl', function () {
 
   // load the controller's module
   beforeEach(module('tp1FullstackApp'));
 
-  var PlaylistComponent, scope;
+  var PlaylistCtrl, scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($componentController, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    PlaylistComponent = $componentController('PlaylistComponent', {
+    PlaylistCtrl = $controller('PlaylistCtrl', {
       $scope: scope
     });
   }));
 
+  it('should ...', function () {
+    expect(1).toEqual(1);
+  });
 });
