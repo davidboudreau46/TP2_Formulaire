@@ -6,17 +6,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
       </button>
       <a href="/" class="navbar-brand"> DJ's Movies</a>
     </div>
     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-
+      
         <ul class="nav navbar-nav">
             <li ng-class="{ active: isActive('/')}"><a href="/">Home</a></li>
             <li ng-class="{ active: isActive('/contact')}"><a ng-href="/contact">Contact</a></li>
             <li ng-class="{ active: isActive('/search')}"><a ng-href="/search">Recherche</a></li>
-			<li ng-class="{ active: isActive('/playlist')}" ng-show="isLogged()" > <a ng-href="/playlist">Liste de lecture</a> </li>
+			<li ng-show="isLogged()"> <a ng-href="/playlist">Liste de lecture</a> </li>
         </ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li ng-hide="isLogged()" ng-class="{ active: isActive('/signIn')}"><a ng-href="/signIn">Connexion</a></li>
