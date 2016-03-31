@@ -56,7 +56,8 @@ angular.module('tp1FullstackApp')
 						url: 'https://crispesh.herokuapp.com/api/comments/' +id,
 						data: {
 							'body' : body,
-							'movie_id' : omdbid 
+							'movie_id' : omdbid, 
+							'status' : false
 						}
 					}).then(function successCallback(response) {
 						console.log(response);
@@ -65,6 +66,16 @@ angular.module('tp1FullstackApp')
 						console.log(response);
 					});
 				}
+				
+				scope.edit= false;
+				scope.showEdit= function(){
+					if(scope.edit== false){
+						scope.edit= true;
+					}
+					else{
+						scope.edit= false;
+					}
+				}
 
 				scope.isMyComment= function(username){
 					if(username== auth.getUserName()){
@@ -72,6 +83,11 @@ angular.module('tp1FullstackApp')
 					}
 					return false;
 				}
+				
+				scope.getDayComment= function(completeTime){
+					return completeTime.substring(0,8);
+				}
+				
 			}
 		};
 	})

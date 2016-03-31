@@ -1,5 +1,31 @@
 <p>Comments
-<ul>
+<div ng-repeat="comment in comments" class="container jumbotron">
+	<div class="row">
+		<strong> {{comment.user.username}} </strong> :
+		<span class="pull-right"> {{comment.date_created.substring(0,10)}}</span>
+		<div class="pull-right" ng-show="isMyComment(comment.user.username)">
+			<span class="glyphicon glyphicon-remove" ng-click="deleteComment(comment.id)"/>
+			<span class="glyphicon glyphicon-pencil" ng-click="showEdit()" /> - &nbsp
+		</div>
+	</div>
+	<div class="row">
+		{{ comment.body }}
+
+		<form ng-show="edit && isMyComment(comment.user.username)">
+			<br>
+			<p> Éditer votre commentaire
+			<input type="text" class="form-control" name="name" ng-model="commentEdit" required />
+			<button type="submit" id="submitButton" class="btn btn-primary pull-right" ng-click="editComment(comment.id, commentEdit, omdbid)">Envoyer</button>
+			<br>
+		</form>
+	</div>
+		
+	</div>
+</div>
+
+<div ng-show="!!!comments.length">No comments found</div>
+
+<!--<ul>
 	<li ng-repeat="comment in comments">
 		{{ comment.body }}
 		<div class="pull-right" ng-show="isMyComment(comment.user.username)">
@@ -14,6 +40,4 @@
 			<br>
 		</form>
 	</li>
-</ul>
-
-<div ng-show="!!!comments.length">No comments found</div>
+</ul>-->
