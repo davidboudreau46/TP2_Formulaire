@@ -39,13 +39,14 @@
       <div class="container" id="playlistMovies">
 
         <div class = "row">
-          <div ng-repeat="movie in moviesInPlaylist">
-            <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
+          <div ng-repeat="movie in omdbMoviesInPlaylist">
+            <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4" style ="display: {{movie.isInTheList}}">
               <div class="thumbnail"  style="min-height: 455px;">
                 <p style="font-size: medium" class="text-center">{{movie.Title}}</p>
                 <img src="{{movie.Poster}}" width="75%" height="75%">
                 <br>
-                <button type="submit" style="background-color: {{movie.checkColor}}" id="WatchedButton" class="btn btn-primary center-block" ng-click="updateMovie(movie)">✓</button>
+                <button type="submit" style="background-color: {{movie.statusColor}}" id="WatchedButton" class="btn btn-primary center-block" ng-click="updateMovie(movie)"><i class="fa fa-eye fa-lg"></i> Vue</button>
+
                 <br>
                 <button type="submit" style="background-color: red" id="deleteButton" class="btn btn-primary center-block" ng-click="deleteMovie(movie)">Suprimer</button>
               </div>

@@ -10,8 +10,9 @@ angular.module('tp1FullstackApp')
     }).then(function successCallback(response) {
       console.log(response);
       $scope.apiMoviesInPlaylist = response.data;
-      $scope.moviesInPlaylist = [];
+      $scope.omdbMoviesInPlaylist = [];
       var k = 0;
+
       for(var i = 0; i < $scope.apiMoviesInPlaylist.length; i++){
         var url = 'https://omdbapi.com/?i=' + $scope.apiMoviesInPlaylist[i].movie_id;
         $http({
@@ -21,24 +22,42 @@ angular.module('tp1FullstackApp')
           if(response.data.Poster === 'N/A'){
             response.data.Poster = 'assets/images/posterNotAvailable.jpg';
           }
-          response.data.id = $scope.apiMoviesInPlaylist[k].id;
-          response.data.status = $scope.apiMoviesInPlaylist[k].status;
-          if(response.data.status == 0){
-            response.data.checkColor = "green";
-          }
-          else{
-            response.data.checkColor = "darkgray";
-          }
-          k++;
-          $scope.moviesInPlaylist.push(response.data);
+          response.data.statusColor = $scope.getStatusColor(response.data.imdbID);
+          response.data.isInTheList = "";
+          $scope.omdbMoviesInPlaylist.push(response.data);
         }, function errorCallback() {
           console.log("God Dammit");
         });
       }
-      console.log($scope.moviesInPlaylist);
+      console.log($scope.omdbMoviesInPlaylist);
     }, function errorCallback() {
       console.log("Erreur");
     });
+
+    $scope.getID = function(imdbID){
+      for(var index = 0; index < $scope.apiMoviesInPlaylist.length; index++){
+        if($scope.apiMoviesInPlaylist[index].movie_id == imdbID){
+          return $scope.apiMoviesInPlaylist[index].id;
+        }
+      }
+    }
+
+    $scope.getStatus = function(imdbID){
+      for(var index = 0; index < $scope.apiMoviesInPlaylist.length; index++){
+        if($scope.apiMoviesInPlaylist[index].movie_id == imdbID){
+          return $scope.apiMoviesInPlaylist[index].status;
+        }
+      }
+    }
+
+    $scope.getStatusColor = function(imdbID){
+      if($scope.getStatus(imdbID) == 1){
+        return "darkgray";
+      }
+      else{
+        return "green";
+      }
+    }
 
     $scope.Search = function(){
       $http({
@@ -74,7 +93,7 @@ angular.module('tp1FullstackApp')
     }
 
     $scope.deleteMovie = function(movie) {
-      var id = movie.id;
+      var id = $scope.getID(movie.imdbID);
       var url= 'https://crispesh.herokuapp.com/api/favs/' + id;
       $http({
         method: 'DELETE',
@@ -82,28 +101,35 @@ angular.module('tp1FullstackApp')
         data: id
       }).then(function successCallback(response) {
         console.log(response);
-        $route.reload();
+        movie.isInTheList = "none";
       }, function errorCallback() {
         console.log("Dammit");
       });
     }
 
     $scope.updateMovie = function (movie){
-      console.log("--------------------CHECKBOX------------");
-      console.log(movie);
       var watched = 0;
-      if(movie.checkColor == "green"){
+      if(movie.statusColor == "green"){
         watched = 1;
+        movie.statusColor = "darkgray";
       }
-      var url= 'https://crispesh.herokuapp.com/api/favs/' + movie.id;
-      var data = {movie_id: movie.id, status: watched};
+      else {
+        movie.statusColor = "green";
+      }
+      var url= 'https://crispesh.herokuapp.com/api/favs/' + $scope.getID(movie.imdbID);
+      var data = {movie_id: movie.imdbID, status: watched};
       $http({
         method: 'PUT',
         url: url,
         data: data
       }).then(function successCallback(response) {
         console.log(response);
-        $route.reload();
+        if(watched == 0){
+          movie.statusColor = "green";
+        }
+        else {
+          movie.statusColor = "darkgray";
+        }
       }, function errorCallback() {
         console.log("Dammit");
       });
