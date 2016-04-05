@@ -37,7 +37,7 @@
 		<div class="form-group row " show-errors='{showSuccess: true}'>
 			<label class="control-label col-xs-12 col-sm-6 col-lg-4">Votre message: </label>
 			<div class="col-xs-12 col-sm-12 col-lg-12">
-				<textarea rows="4" class="form-control" name="message" ng-model="message" required />
+				<textarea rows="4" class="form-control" name="message" ng-model="message" required > </textarea>
 				<p id="emptyMessageError" class="help-block text-center" ng-show="contactForm.message.$error.required && contactForm.message.$dirty">Le message est requis.</p>
 			</div>
 		</div>

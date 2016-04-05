@@ -31,6 +31,9 @@ angular.module('tp1FullstackApp', [
 			if(config.url.indexOf("https://crispesh.herokuapp.com/api/favs") === 0 && token) {
 				config.headers.Authorization = 'Bearer ' + token;
 			}
+			else if(config.url.indexOf("https://crispesh.herokuapp.com/api/comments") === 0 && token) {
+				config.headers.Authorization = 'Bearer ' + token;
+			}
 
 			return config;
 		}
