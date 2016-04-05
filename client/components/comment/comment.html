@@ -5,10 +5,10 @@
 		<span class="pull-right"> {{comment.date_created.substring(0,10)}}</span>
 		<div class="pull-right" ng-show="isMyComment(comment.user.username)">
 			<span ng-show="showDeleteComment && isDeleteComment(comment.id)">
-				<span class="text-danger"> Êtes-vous sûr? </span> <span ng-click="deleteComment(comment.id)" class="underline-hover">Yes</span>&nbsp <span class="text-danger">/</span>&nbsp <span class="underline-hover" ng-click="showDelete(comment.id)">No</span>
+				<span class="text-danger"> Êtes-vous sûr? </span> <span ng-click="deleteComment(comment.id)" class="underline-hover">Yes</span><span class="text-danger">/</span>&nbsp <span class="underline-hover" ng-click="showDelete(comment.id)">No</span>
 			</span>
-			<span class="glyphicon glyphicon-remove" ng-click="showDelete(comment.id)" ng-hide="showDeleteComment && isDeleteComment(comment.id)" />
-			<span class="glyphicon glyphicon-pencil" ng-click="showEdit(comment.id)" /> - &nbsp
+			<span class="glyphicon glyphicon-remove" ng-click="showDelete(comment.id)" ng-hide="showDeleteComment && isDeleteComment(comment.id)" > </span>
+			<span class="glyphicon glyphicon-pencil" ng-click="showEdit(comment.id)" > </span>
 		</div>
 	</div>
 	<div class="row">

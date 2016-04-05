@@ -19,8 +19,8 @@
 		  <div class="thumbnail"  style="min-height: 700px;">
 			<p class="text-center">{{movie.Title}}</p>
 			<img src="{{movie.Poster}}" width="40%" height="40%">
-			<appx-comment omdbid="movie.imdbID"></appx-comment>
-			<appx-comment-create omdbid="movie.imdbID"></appx-comment-create> 
+			<appx-comment omdbid="movie.imdbID" ng-show="isLogged()"></appx-comment>
+			<appx-comment-create omdbid="movie.imdbID" ng-show="isLogged()"></appx-comment-create> 
 		 </div>
 	   </div> 
 	 </div>
