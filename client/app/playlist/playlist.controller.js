@@ -8,7 +8,6 @@ angular.module('tp1FullstackApp')
       method: 'GET',
       url: 'https://crispesh.herokuapp.com/api/favs/me'
     }).then(function successCallback(response) {
-      console.log(response);
       $scope.apiMoviesInPlaylist = response.data;
       $scope.omdbMoviesInPlaylist = [];
       var k = 0;
@@ -26,12 +25,9 @@ angular.module('tp1FullstackApp')
           response.data.isInTheList = "";
           $scope.omdbMoviesInPlaylist.push(response.data);
         }, function errorCallback() {
-          console.log("God Dammit");
         });
       }
-      console.log($scope.omdbMoviesInPlaylist);
     }, function errorCallback() {
-      console.log("Erreur");
     });
 
     $scope.getID = function(imdbID){
@@ -85,10 +81,8 @@ angular.module('tp1FullstackApp')
         url: url,
         data: data
       }).then(function successCallback(response) {
-        console.log(response);
         $route.reload();
       }, function errorCallback() {
-        console.log("Dammit");
       });
     }
 
@@ -100,10 +94,8 @@ angular.module('tp1FullstackApp')
         url: url,
         data: id
       }).then(function successCallback(response) {
-        console.log(response);
         movie.isInTheList = "none";
       }, function errorCallback() {
-        console.log("Dammit");
       });
     }
 
@@ -123,7 +115,6 @@ angular.module('tp1FullstackApp')
         url: url,
         data: data
       }).then(function successCallback(response) {
-        console.log(response);
         if(watched == 0){
           movie.statusColor = "green";
         }
@@ -131,7 +122,6 @@ angular.module('tp1FullstackApp')
           movie.statusColor = "darkgray";
         }
       }, function errorCallback() {
-        console.log("Dammit");
       });
     }
   });
