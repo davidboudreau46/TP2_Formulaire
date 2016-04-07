@@ -10,7 +10,6 @@ angular.module('tp1FullstackApp')
     }).then(function successCallback(response) {
       $scope.apiMoviesInPlaylist = response.data;
       $scope.omdbMoviesInPlaylist = [];
-      var k = 0;
 
       for(var i = 0; i < $scope.apiMoviesInPlaylist.length; i++){
         var url = 'https://omdbapi.com/?i=' + $scope.apiMoviesInPlaylist[i].movie_id;
