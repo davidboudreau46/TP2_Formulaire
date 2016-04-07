@@ -128,7 +128,7 @@ angular.module('tp1FullstackApp')
 				scope.getDayComment= function(completeTime){
 					return completeTime.substring(0,8);
 				}
-				
+				scope.characterLimit=255;
 			}
 		};
 	})
@@ -154,6 +154,7 @@ angular.module('tp1FullstackApp')
 						
 					});
 				}
+				scope.characterLimit=255;
 			}
 		};
 	});
