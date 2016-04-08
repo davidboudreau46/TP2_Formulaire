@@ -1,10 +1,10 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="jumbotron container" style="text-aline: center;">
-  <h2>Bienvenue sur DJ's Movies</h2>
+<div class="jumbotron container">
+  <h2 class="text-center">Bienvenue sur DJ's Movies</h2>
   <p class="lead">
-    <img src="assets/images/movie.png" height="75%" width="75%" ><br>
-    Un site à votre écoute!
+    <img src="assets/images/movie.png" height="75%" width="75%" class="center-block"><br>
+    <h2 class="text-center"> Un site à votre écoute! </h2>
   </p>
 </div>
 
@@ -15,12 +15,14 @@
 <div class = "jumbotron container">
 	<div class = "row">
 	   <div ng-repeat="movie in movies | limitTo:6">
-		<div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
-		  <div class="thumbnail"  style="min-height: 350px;">
-			<p>{{movie.Title}}</p>
-			<img src="{{movie.Poster}}" width="70%" height="70%">
+		<div class="col-sm-12 col-xs-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+		  <div class="thumbnail"  style="min-height: 700px;">
+			<p class="text-center">{{movie.Title}}</p>
+			<img src="{{movie.Poster}}" width="40%" height="40%">
+			<appx-comment omdbid="movie.imdbID" ng-show="isLogged()"></appx-comment>
+			<appx-comment-create omdbid="movie.imdbID" ng-show="isLogged()"></appx-comment-create> 
 		 </div>
-	   </div>
+	   </div> 
 	 </div>
 	</div>
 </div>

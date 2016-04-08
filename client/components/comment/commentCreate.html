@@ -1,0 +1,10 @@
+<p>Créer un commentaire
+<form class="container">
+	<div class="row">
+		<textarea type="text" class="form-control" name="name" ng-model="comment" required> </textarea>
+		<button type="submit" id="submitButton" class="btn btn-primary pull-right" ng-click="sendForm(comment, omdbid)">Envoyer</button>
+	</div>
+	<div class="pull-right">
+		<span ng-class="{'text-danger': comment.length>characterLimit}">{{comment.length}}</span><span ng-show="!!!comment.length">0</span><span>/{{characterLimit}} </span>
+	</div>
+</form>

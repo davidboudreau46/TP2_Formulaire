@@ -4,16 +4,16 @@
 
   <div class="jumbotron">
     <p>Entrer le nom du film que vous recherchez :</p>
-    <input class="ng-pristine ng-valid ng-empty ng-touched" type="text" ng-model="filter" ng-change="Search()" id="keywordInput" ng-model-options="{ debounce: 300 }"/>
+    <input class="ng-pristine ng-valid ng-empty ng-touched" type="text" ng-model="filter" ng-change="Search()" id="keywordInput" ng-model-options="{ debounce: 300 }" autofocus/>
   </div>
 
-  <div class="container" id="searchResult" ng-hide="isSearch" ng-model="searchResult">
+  <div class="container" id="searchResult" ng-show="isSearch" ng-model="searchResult">
     <div class="jumbotron">
       <div class = "row">
         <div ng-repeat="movie in movies">
           <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
-            <div class="thumbnail"  style="min-height: 325px;">
-              <p style="font-size: medium">{{movie.Title}}</p>
+            <div class="thumbnail"  style="min-height: 455px;">
+              <p style="font-size: medium" class="text-center">{{movie.Title}}</p>
               <img src="{{movie.Poster}}" width="75%" height="75%">
             </div>
           </div>
@@ -21,6 +21,5 @@
       </div>
     </div>
   </div>
-<!--ok-->
 </div>
 

@@ -18,6 +18,7 @@
     <!-- build:css({.tmp,client}) app/app.css -->
     <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
+      <link rel="stylesheet" href="app/main/main.css">
       <!-- endinjector -->
     <!-- endbuild -->
   </head>
@@ -54,6 +55,7 @@
       <script src="bower_components/angular-route/angular-route.js"></script>
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/angular-bootstrap-checkbox/angular-bootstrap-checkbox.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
 
@@ -64,12 +66,15 @@
           <script src="app/contact/contact.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
+          <script src="app/playlist/playlist.controller.js"></script>
+          <script src="app/playlist/playlist.js"></script>
           <script src="app/search/search.controller.js"></script>
           <script src="app/search/search.js"></script>
           <script src="app/signIn/signIn.controller.js"></script>
           <script src="app/signIn/signIn.js"></script>
           <script src="app/signUp/signUp.controller.js"></script>
           <script src="app/signUp/signUp.js"></script>
+          <script src="components/auth/auth.service.js"></script>
           <script src="components/modal/modal.service.js"></script>
           <script src="components/navbar/navbar.controller.js"></script>
           <!-- endinjector -->

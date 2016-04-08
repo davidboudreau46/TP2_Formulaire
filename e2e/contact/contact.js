@@ -15,9 +15,9 @@ describe('Controller: ContactCtrl', function () {
 	it('invalid email should show message', function() {
 		browser.get('#/contact');
 		
-		element(by.model('contact.email')).sendKeys('IamNotAnEmail');
+		element(by.model('email')).sendKeys('IamNotAnEmail');
 		
-		element(by.model('contact.name')).click();
+		element(by.model('name')).click();
 		
 		element(by.id('invalidEmailError')).isDisplayed().then(function(visible){
 			expect(visible).toBeTruthy();
@@ -27,9 +27,9 @@ describe('Controller: ContactCtrl', function () {
 	it('empty email should show message', function() {
 		browser.get('#/contact');
 		
-		element(by.model('contact.email')).sendKeys(1);
+		element(by.model('email')).sendKeys(1);
 		
-		element(by.model('contact.email')).clear();
+		element(by.model('email')).clear();
 		
 		element(by.id('emptyEmailError')).isDisplayed().then(function(visible){
 			expect(visible).toBeTruthy();
@@ -39,9 +39,9 @@ describe('Controller: ContactCtrl', function () {
 	it('empty user name should show error', function() {
 		browser.get('#/contact');
 		
-		element(by.model('contact.name')).sendKeys(1);
+		element(by.model('name')).sendKeys(1);
 		
-		element(by.model('contact.name')).clear();
+		element(by.model('name')).clear();
 		
 		element(by.id('emptyNameError')).isDisplayed().then(function(visible){
 			expect(visible).toBeTruthy();
@@ -51,9 +51,9 @@ describe('Controller: ContactCtrl', function () {
 	it('empty user name should show error', function() {
 		browser.get('#/contact');
 		
-		element(by.model('contact.message')).sendKeys(1);
+		element(by.model('message')).sendKeys(1);
 		
-		element(by.model('contact.message')).clear();
+		element(by.model('message')).clear();
 		
 		element(by.id('emptyMessageError')).isDisplayed().then(function(visible){
 			expect(visible).toBeTruthy();

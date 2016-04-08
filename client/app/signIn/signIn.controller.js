@@ -1,21 +1,29 @@
 'use strict';
 
 angular.module('tp1FullstackApp')
-	.controller('SignInCtrl', function ($scope, $http, $location) {
-		
+	.controller('SignInCtrl', function ($scope, $http, $location, auth) {
+
 		$scope.sendForm= function(){
 			var url= 'https://crispesh.herokuapp.com/api/login_check';
-			var data= {username: $scope.signIn.email, password: $scope.signIn.password};
+			var data= {username: $scope.signInEmail, password: $scope.signInPassword};
 			$http({
 				method: 'POST',
 				url: url,
 				data: data,
-			}).then(function successCallback(response) {
+			}).then(function successCallback() {
 				$location.path('/');
-				$scope.loggedIn=true;
-			}, function errorCallback(response) {
-				console.log(response);
+			}, function errorCallback() {
 				$scope.invalidLogin=true;
 			});
 		};
-	});
+	})
+	.directive('autofocus', ['$timeout', function($timeout) {
+		return {
+			restrict: 'A',
+			link : function($scope, $element) {
+			  $timeout(function() {
+				$element[0].focus();
+			  });
+			}
+		};
+	}]);
