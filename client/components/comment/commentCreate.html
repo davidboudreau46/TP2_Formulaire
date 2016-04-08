@@ -1,7 +1,7 @@
 <p>Créer un commentaire
 <form class="container">
 	<div class="row">
-		<input type="text" class="form-control" name="name" ng-model="comment" required />
+		<input type="text" class="form-control" id="commentTextArea" ng-model="comment" required />
 		<button type="submit" id="submitButton" class="btn btn-primary pull-right" ng-click="sendForm(comment, omdbid)">Envoyer</button>
 	</div>
 </form>

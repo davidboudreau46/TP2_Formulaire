@@ -15,11 +15,17 @@ describe('Controller: PlaylistCtrl', function () {
   });
 
   it('should have a button delete in movie in playlist', function() {
+    //element(by.id('signOutButton')).click();
+
     browser.get('#/signIn');
 
     element(by.model('signInEmail')).sendKeys('okok@ok.com');
     element(by.model('signInPassword')).sendKeys('okok');
     element(by.buttonText('Envoyer')).click();
+
+    element(by.id('title')).isDisplayed().then(function(visible) {
+      expect(visible).toBeTruthy();
+    });
 
     browser.get('#/playlist');
 
