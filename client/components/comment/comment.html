@@ -17,7 +17,7 @@
 		<form ng-show="showEditComment && isEditComment(comment.id)">
 			<br>
 			<p> Éditer votre commentaire
-			<textarea type="text" class="form-control" name="name" ng-model="commentEdit" ng-init="commentEdit=comment.body" required> </textarea>
+			<textarea type="text" class="form-control"  id="commentTextArea" ng-model="commentEdit" ng-init="commentEdit=comment.body" required> </textarea>
 			<button type="submit" id="submitButton" class="btn btn-primary pull-right" ng-click="editComment(comment.id, commentEdit, omdbid)">Envoyer</button>
 			<br>
 			<div class="pull-right">

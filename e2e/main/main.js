@@ -24,7 +24,7 @@ describe('Controller: MainCtrl', function () {
     });
 
     element(by.buttonText('Envoyer')  ).isDisplayed().then(function() {
-      expect(element(by.buttonText('Envoyer')).isDisplayed()).toBeTruthy();
+      expect(element(by.buttonText('Envoyer')).isDisplayed()).toBeFalsy();
     });
   });
 
@@ -47,7 +47,7 @@ describe('Controller: MainCtrl', function () {
     });
 
     element(by.id('commentTextArea')).isDisplayed().then(function(visible) {
-      expect(visible).toBeTruthy();
+      expect(visible).toBeFalsy();
     });
   });
 
