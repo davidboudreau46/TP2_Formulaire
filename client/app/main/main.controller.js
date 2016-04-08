@@ -127,11 +127,7 @@ angular.module('tp1FullstackApp')
 				scope.getDayComment= function(completeTime){
 					return completeTime.substring(0,8);
 				}
-<<<<<<< HEAD
-
-=======
 				scope.characterLimit=255;
->>>>>>> master
 			}
 		};
 	})
