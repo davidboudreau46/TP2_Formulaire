@@ -4,9 +4,8 @@ angular.module('tp1FullstackApp')
 	.controller('MainCtrl', function ($scope, $http, auth) {
 		$http({
 			method: 'GET',
-			url: 'https://omdbapi.com/?s=' + 'the' + '&type=movie&y=2016'
+			url: 'https://omdbapi.com/?s=the&type=movie&y=2016'
 		}).then(function successCallback(response) {
-			$scope.isSearch=true;
 			$scope.movies = response.data.Search;
 			for(var i = 0; i < $scope.movies.length; i++){
 				if($scope.movies[i].Poster === 'N/A'){
@@ -24,7 +23,7 @@ angular.module('tp1FullstackApp')
 		return {
 			templateUrl: 'components/comment/comment.html',
 			restrict: 'EA',
-			scope: { 
+			scope: {
 				omdbid: '=omdbid'
 			},
 			link: function (scope, element, attrs) {
@@ -34,7 +33,7 @@ angular.module('tp1FullstackApp')
 							$http({
 							method: 'GET',
 							url: 'https://crispesh.herokuapp.com/api/comments?movie_id='+value,
-							timeout: 5000, 
+							timeout: 5000,
 							}).then(function successCallback(response) {
 								scope.comments = response.data;
 							}, function errorCallback(response) {
@@ -52,26 +51,26 @@ angular.module('tp1FullstackApp')
 					}).then(function successCallback(response) {
 						$route.reload();
 					}, function errorCallback(response) {
-						
+
 					});
 				}
-				
+
 				scope.editComment= function(id, body, omdbid){
 					$http({
 						method: 'PUT',
 						url: 'https://crispesh.herokuapp.com/api/comments/' +id,
 						data: {
 							'body' : body,
-							'movie_id' : omdbid, 
+							'movie_id' : omdbid,
 							'status' : false
 						}
 					}).then(function successCallback(response) {
 						$route.reload();
 					}, function errorCallback(response) {
-						
+
 					});
 				}
-				
+
 				scope.showEditComment= false;
 				scope.commentToEdit="";
 				scope.showEdit= function(id){
@@ -87,7 +86,7 @@ angular.module('tp1FullstackApp')
 						scope.commentToDelete= "";
 					}
 				}
-				
+
 				scope.showDeleteComment=false;
 				scope.commentToDelete="";
 				scope.showDelete= function(id){
@@ -110,25 +109,29 @@ angular.module('tp1FullstackApp')
 					}
 					return false;
 				}
-				
+
 				scope.isEditComment= function(id){
 					if(id==scope.commentToEdit){
 						return true;
 					}
 					return false;
 				}
-				
+
 				scope.isDeleteComment= function(id){
 					if(id==scope.commentToDelete){
 						return true;
 					}
 					return false;
 				}
-				
+
 				scope.getDayComment= function(completeTime){
 					return completeTime.substring(0,8);
 				}
+<<<<<<< HEAD
+
+=======
 				scope.characterLimit=255;
+>>>>>>> master
 			}
 		};
 	})
@@ -146,12 +149,12 @@ angular.module('tp1FullstackApp')
 						url: 'https://crispesh.herokuapp.com/api/comments',
 						data: {
 							'body' : body,
-							'movie_id' : omdbid 
+							'movie_id' : omdbid
 						}
 					}).then(function successCallback(response) {
-						$route.reload(); 
+						$route.reload();
 					}, function errorCallback(response) {
-						
+
 					});
 				}
 				scope.characterLimit=255;

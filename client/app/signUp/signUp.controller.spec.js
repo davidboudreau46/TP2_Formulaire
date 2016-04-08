@@ -19,36 +19,34 @@ describe('Controller: SignupCtrl', function () {
 			return $controller('SignUpCtrl', {'$scope' : $rootScope });
 		};
 	}));
-	
+
 	it('with invalid informations should show errors', function () {
 		var controller = createController();
 		$httpBackend.expectPOST('https://crispesh.herokuapp.com/api/register').respond(500, '');
-		$httpBackend.when('GET', 'app/main/main.html').respond('');
-		$httpBackend.expectGET('app/main/main.html');
-		
+
+
 		$rootScope.email='thisIsNotAValidEmail';
 		$rootScope.name='test';
 		$rootScope.familyName='lol';
 		$rootScope.password='bob';
 		$rootScope.sendForm();
 		$httpBackend.flush();
-		
+
 		expect($rootScope.invalidLogin).toBe(true);
 	});
-	
+
 	it('with valid informations should show not errors', function () {
 		var controller = createController();
 		$httpBackend.expectPOST('https://crispesh.herokuapp.com/api/register').respond(201, '');
-		$httpBackend.when('GET', 'app/main/main.html').respond('');
-		$httpBackend.expectGET('app/main/main.html');
-		
+
+
 		$rootScope.email='test@test.test';
 		$rootScope.name='test';
 		$rootScope.familyName='lol';
 		$rootScope.password='bob';
 		$rootScope.sendForm();
 		$httpBackend.flush();
-		
+
 		expect($rootScope.sentForm).toBe(true);
 	});
 

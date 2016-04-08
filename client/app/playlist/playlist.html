@@ -6,25 +6,27 @@
   </div>
 </div>
 
+
+
 <div class = "container">
 
   <div class="jumbotron">
     <div class="container">
+
       <p>Entrez le nom du film que vous voulez ajouter :</p>
       <input class="ng-pristine ng-valid ng-empty ng-touched" type="text" ng-model="filter" ng-change="Search()" id="keywordInput" ng-model-options="{ debounce: 300 }" autofocus/>
     </div>
     <br>
 
     <div class="container" id="searchResult" ng-show="isSearch" ng-model="searchResult">
-
       <div class = "row">
-        <div ng-repeat="movie in movies | limitTo: 3">
+        <div ng-repeat="movie in movies | limitTo: 6">
           <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
             <div class="thumbnail"  style="min-height: 455px;">
               <p style="font-size: medium" class="text-center">{{movie.Title}}</p>
               <img src="{{movie.Poster}}" width="75%" height="75%">
               <br>
-              <button type="submit" id="addButton" class="btn btn-primary center-block" value="{{movie.imdbID}}" ng-click="addMovie(movie)">Ajouter</button>
+              <button type="submit" id="addButton" class="btn btn-primary center-block" ng-click="addMovie(movie)">Ajouter</button>
             </div>
           </div>
         </div>
@@ -35,7 +37,7 @@
 
 
     <div class="jumbotron">
-      <p>Vos films :</p>
+      <p>Vos films : <h4 style="background-color: red">{{erreur}}</h4></p>
       <div class="container" id="playlistMovies">
 
         <div class = "row">

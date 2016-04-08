@@ -3,14 +3,14 @@
 angular.module('tp1FullstackApp')
   .controller('PlaylistCtrl', function ($scope, $http, $route) {
     $scope.apiMoviesInPlaylist = [];
-
+    $scope.authorized = true;
+    $scope.erreur = "";
     $http({
       method: 'GET',
       url: 'https://crispesh.herokuapp.com/api/favs/me'
     }).then(function successCallback(response) {
       $scope.apiMoviesInPlaylist = response.data;
       $scope.omdbMoviesInPlaylist = [];
-      var k = 0;
 
       for(var i = 0; i < $scope.apiMoviesInPlaylist.length; i++){
         var url = 'https://omdbapi.com/?i=' + $scope.apiMoviesInPlaylist[i].movie_id;
@@ -27,7 +27,13 @@ angular.module('tp1FullstackApp')
         }, function errorCallback() {
         });
       }
-    }, function errorCallback() {
+    }, function errorCallback(error) {
+      var errorCode = error.data.error.code;
+      if(errorCode == 401){
+        $scope.authorized = false;
+        $scope.erreur = "| Unauthorized | Vous devez être connecté.";
+      }
+
     });
 
     $scope.getID = function(imdbID){
@@ -82,6 +88,17 @@ angular.module('tp1FullstackApp')
         data: data
       }).then(function successCallback(response) {
         $route.reload();
+      }, function errorCallback() {
+      });
+    }
+
+    $scope.getOneMovie = function(id){
+      var url= 'https://crispesh.herokuapp.com/api/' + id;
+      $http({
+        method: 'GET',
+        url: url,
+      }).then(function successCallback(response) {
+        return response;
       }, function errorCallback() {
       });
     }

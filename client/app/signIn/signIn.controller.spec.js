@@ -23,27 +23,23 @@ describe('Controller: SignInCtrl', function () {
 	it('with valid credentials should send user to main page', function () {
 		var controller = createController();
 		$httpBackend.expectPOST('https://crispesh.herokuapp.com/api/login_check').respond(201, '');
-		$httpBackend.when('GET', 'app/main/main.html').respond('');
-		$httpBackend.expectGET('app/main/main.html');
-		
+
 		$rootScope.signInEmail="test@example.com";
 		$rootScope.signInPassword="test";
 		$rootScope.sendForm();
 		$httpBackend.flush();
-		
+
 		expect(location.path()).toBe('/');
 	});
-	
+
 	it('with invalid credentials should show errors', function () {
 		var controller = createController();
 		$httpBackend.expectPOST('https://crispesh.herokuapp.com/api/login_check').respond(500, '');
-		$httpBackend.when('GET', 'app/main/main.html').respond('');
-		$httpBackend.expectGET('app/main/main.html');
 		$rootScope.signInEmail="test@example.com";
 		$rootScope.signInPassword="test2";
 		$rootScope.sendForm();
 		$httpBackend.flush();
-		
+
 		expect($rootScope.invalidLogin).toBe(true);
 	});
 });

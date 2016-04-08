@@ -22,7 +22,7 @@
 			<li ng-hide="isLogged()" ng-class="{ active: isActive('/signIn')}"><a ng-href="/signIn">Connexion</a></li>
 			<li ng-hide="isLogged()" ng-class="{ active: isActive('/signUp')}"><a ng-href="/signUp">Inscription</a></li>
 			<li ng-show="isLogged()"> <a ng-href="/"> Bonjour, {{getUserName()}} </a> </li>
-			<li ng-show="isLogged()"> <a ng-href="/" ng-click="logOut()">Déconnexion</a> </li>
+			<li ng-show="isLogged()"> <a ng-href="/" ng-click="logOut()" id="signOutButton">Déconnexion</a> </li>
 		</ul>
     </div>
   </div>
